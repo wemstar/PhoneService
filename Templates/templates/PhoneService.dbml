@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Telephone_Service" Class="PhoneServiceDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=POTFOREK;Initial Catalog=Telephone_Service;Integrated Security=True" SettingsObjectName="Templates.Properties.Settings" SettingsPropertyName="Telephone_ServiceConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Client" Member="Clients">
+    <Type Name="Client">
+      <Column Name="Client_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Client_Name" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Client_Surname" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Client_Telephone" Type="System.String" DbType="NChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Client_Adress" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="Client_Issiue" Member="Issiues" ThisKey="Client_ID" OtherKey="Issiue_Client_ID" Type="Issiue" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Issiue" Member="Issiues">
+    <Type Name="Issiue">
+      <Column Name="Issiue_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Issiue_Client_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Issiue_Phone_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Priority" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Issiue_Issiue_History" Member="Issiue_Histories" ThisKey="Issiue_ID" OtherKey="History_Issiue_ID" Type="Issiue_History" />
+      <Association Name="Client_Issiue" Member="Client" ThisKey="Issiue_Client_ID" OtherKey="Client_ID" Type="Client" IsForeignKey="true" />
+      <Association Name="Phone_Issiue" Member="Phone" ThisKey="Issiue_Phone_ID" OtherKey="Phone_ID" Type="Phone" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Issiue_History" Member="Issiue_Histories">
+    <Type Name="Issiue_History">
+      <Column Name="History_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="History_Issiue_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="History_From_Status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="History_To_Status" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="History_Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="History_Comment" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="Issiue_Issiue_History" Member="Issiue" ThisKey="History_Issiue_ID" OtherKey="Issiue_ID" Type="Issiue" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Phone" Member="Phones">
+    <Type Name="Phone">
+      <Column Name="Phone_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Phone_Model_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Color" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="State" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Phone_Issiue" Member="Issiues" ThisKey="Phone_ID" OtherKey="Issiue_Phone_ID" Type="Issiue" />
+      <Association Name="Phone_Model_Phone" Member="Phone_Model" ThisKey="Phone_Model_ID" OtherKey="Model_ID" Type="Phone_Model" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Phone_Model" Member="Phone_Models">
+    <Type Name="Phone_Model">
+      <Column Name="Model_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Model_Parts" Type="System.Xml.Linq.XElement" DbType="Xml NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="Phone_Model_Phone" Member="Phones" ThisKey="Model_ID" OtherKey="Phone_Model_ID" Type="Phone" />
+    </Type>
+  </Table>
+</Database>

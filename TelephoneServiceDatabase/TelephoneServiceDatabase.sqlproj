@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{24b82b35-41a7-406a-8d47-583729e4b40e}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -66,8 +66,20 @@
     <Build Include="tables\Issiue.sql" />
     <Build Include="tables\Phone.sql" />
     <Build Include="tables\Phone_Model.sql" />
+    <Build Include="tables\Issiue_History.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TelephoneServiceDatabase.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TelephoneServiceDatabase.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="procedures\NewIssiue.cs" />
   </ItemGroup>
 </Project>

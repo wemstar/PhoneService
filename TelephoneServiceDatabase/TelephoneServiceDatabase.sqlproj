@@ -65,7 +65,6 @@
     <Build Include="tables\Client.sql" />
     <Build Include="tables\Issiue.sql" />
     <Build Include="tables\Phone.sql" />
-    <Build Include="tables\Phone_Model.sql" />
     <Build Include="tables\Issiue_History.sql" />
     <Build Include="views\GetCurrentStatus.sql" />
     <Build Include="views\GetActiveIssiues.sql" />
@@ -84,5 +83,6 @@
   <ItemGroup>
     <Compile Include="procedures\NewIssiue.cs" />
     <Compile Include="procedures\UpdateIssiue.cs" />
+    <Compile Include="procedures\GenerateBill.cs" />
   </ItemGroup>
 </Project>

@@ -15,7 +15,7 @@ namespace TelephoneServiceDesktop.controls
     {
         private int issiueID;
         PhoneServiceDataContext tableContext;
-        ProcedureTemplateDataContext procedureContext;
+        
 
         public IssiueDetails()
         {
@@ -34,8 +34,9 @@ namespace TelephoneServiceDesktop.controls
             tbClientId.Text = issiueSelected.Client.Client_Name;
             tbPhoneID.Text = issiueSelected.Phone.Phone_ID.ToString();
             tbPriority.Text = issiueSelected.Priority.ToString();
-
+            dgvHistory.DataSource = null;
             dgvHistory.DataSource = issiueSelected.Issiue_Histories;
+           
         }
         private void IssiueDetails_Load(object sender, EventArgs e)
         {

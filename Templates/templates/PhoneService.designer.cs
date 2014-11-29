@@ -42,9 +42,6 @@ namespace Templates.templates
     partial void InsertPhone(Phone instance);
     partial void UpdatePhone(Phone instance);
     partial void DeletePhone(Phone instance);
-    partial void InsertPhone_Model(Phone_Model instance);
-    partial void UpdatePhone_Model(Phone_Model instance);
-    partial void DeletePhone_Model(Phone_Model instance);
     #endregion
 		
 		public PhoneServiceDataContext() : 
@@ -106,14 +103,6 @@ namespace Templates.templates
 			get
 			{
 				return this.GetTable<Phone>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Phone_Model> Phone_Models
-		{
-			get
-			{
-				return this.GetTable<Phone_Model>();
 			}
 		}
 	}
@@ -779,15 +768,15 @@ namespace Templates.templates
 		
 		private int _Phone_ID;
 		
-		private int _Phone_Model_ID;
-		
 		private string _Color;
 		
-		private int _State;
+		private string _State;
+		
+		private string _Model_Name;
+		
+		private string _Serial_Sumber;
 		
 		private EntitySet<Issiue> _Issiues;
-		
-		private EntityRef<Phone_Model> _Phone_Model;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -795,18 +784,19 @@ namespace Templates.templates
     partial void OnCreated();
     partial void OnPhone_IDChanging(int value);
     partial void OnPhone_IDChanged();
-    partial void OnPhone_Model_IDChanging(int value);
-    partial void OnPhone_Model_IDChanged();
     partial void OnColorChanging(string value);
     partial void OnColorChanged();
-    partial void OnStateChanging(int value);
+    partial void OnStateChanging(string value);
     partial void OnStateChanged();
+    partial void OnModel_NameChanging(string value);
+    partial void OnModel_NameChanged();
+    partial void OnSerial_SumberChanging(string value);
+    partial void OnSerial_SumberChanged();
     #endregion
 		
 		public Phone()
 		{
 			this._Issiues = new EntitySet<Issiue>(new Action<Issiue>(this.attach_Issiues), new Action<Issiue>(this.detach_Issiues));
-			this._Phone_Model = default(EntityRef<Phone_Model>);
 			OnCreated();
 		}
 		
@@ -826,30 +816,6 @@ namespace Templates.templates
 					this._Phone_ID = value;
 					this.SendPropertyChanged("Phone_ID");
 					this.OnPhone_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone_Model_ID", DbType="Int NOT NULL")]
-		public int Phone_Model_ID
-		{
-			get
-			{
-				return this._Phone_Model_ID;
-			}
-			set
-			{
-				if ((this._Phone_Model_ID != value))
-				{
-					if (this._Phone_Model.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPhone_Model_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Phone_Model_ID = value;
-					this.SendPropertyChanged("Phone_Model_ID");
-					this.OnPhone_Model_IDChanged();
 				}
 			}
 		}
@@ -874,8 +840,8 @@ namespace Templates.templates
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="Int NOT NULL")]
-		public int State
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="NChar(40) NOT NULL", CanBeNull=false)]
+		public string State
 		{
 			get
 			{
@@ -894,6 +860,46 @@ namespace Templates.templates
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Model_Name", DbType="NChar(40) NOT NULL", CanBeNull=false)]
+		public string Model_Name
+		{
+			get
+			{
+				return this._Model_Name;
+			}
+			set
+			{
+				if ((this._Model_Name != value))
+				{
+					this.OnModel_NameChanging(value);
+					this.SendPropertyChanging();
+					this._Model_Name = value;
+					this.SendPropertyChanged("Model_Name");
+					this.OnModel_NameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Serial_Sumber", DbType="NChar(40) NOT NULL", CanBeNull=false)]
+		public string Serial_Sumber
+		{
+			get
+			{
+				return this._Serial_Sumber;
+			}
+			set
+			{
+				if ((this._Serial_Sumber != value))
+				{
+					this.OnSerial_SumberChanging(value);
+					this.SendPropertyChanging();
+					this._Serial_Sumber = value;
+					this.SendPropertyChanged("Serial_Sumber");
+					this.OnSerial_SumberChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Phone_Issiue", Storage="_Issiues", ThisKey="Phone_ID", OtherKey="Issiue_Phone_ID")]
 		public EntitySet<Issiue> Issiues
 		{
@@ -904,40 +910,6 @@ namespace Templates.templates
 			set
 			{
 				this._Issiues.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Phone_Model_Phone", Storage="_Phone_Model", ThisKey="Phone_Model_ID", OtherKey="Model_ID", IsForeignKey=true)]
-		public Phone_Model Phone_Model
-		{
-			get
-			{
-				return this._Phone_Model.Entity;
-			}
-			set
-			{
-				Phone_Model previousValue = this._Phone_Model.Entity;
-				if (((previousValue != value) 
-							|| (this._Phone_Model.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Phone_Model.Entity = null;
-						previousValue.Phones.Remove(this);
-					}
-					this._Phone_Model.Entity = value;
-					if ((value != null))
-					{
-						value.Phones.Add(this);
-						this._Phone_Model_ID = value.Model_ID;
-					}
-					else
-					{
-						this._Phone_Model_ID = default(int);
-					}
-					this.SendPropertyChanged("Phone_Model");
-				}
 			}
 		}
 		
@@ -971,168 +943,6 @@ namespace Templates.templates
 		{
 			this.SendPropertyChanging();
 			entity.Phone = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Phone_Model")]
-	public partial class Phone_Model : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Model_ID;
-		
-		private System.Xml.Linq.XElement _Model_Parts;
-		
-		private string _Name;
-		
-		private string _Producer;
-		
-		private EntitySet<Phone> _Phones;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnModel_IDChanging(int value);
-    partial void OnModel_IDChanged();
-    partial void OnModel_PartsChanging(System.Xml.Linq.XElement value);
-    partial void OnModel_PartsChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnProducerChanging(string value);
-    partial void OnProducerChanged();
-    #endregion
-		
-		public Phone_Model()
-		{
-			this._Phones = new EntitySet<Phone>(new Action<Phone>(this.attach_Phones), new Action<Phone>(this.detach_Phones));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Model_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Model_ID
-		{
-			get
-			{
-				return this._Model_ID;
-			}
-			set
-			{
-				if ((this._Model_ID != value))
-				{
-					this.OnModel_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Model_ID = value;
-					this.SendPropertyChanged("Model_ID");
-					this.OnModel_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Model_Parts", DbType="Xml", UpdateCheck=UpdateCheck.Never)]
-		public System.Xml.Linq.XElement Model_Parts
-		{
-			get
-			{
-				return this._Model_Parts;
-			}
-			set
-			{
-				if ((this._Model_Parts != value))
-				{
-					this.OnModel_PartsChanging(value);
-					this.SendPropertyChanging();
-					this._Model_Parts = value;
-					this.SendPropertyChanged("Model_Parts");
-					this.OnModel_PartsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NChar(30) NOT NULL", CanBeNull=false)]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Producer", DbType="NChar(20) NOT NULL", CanBeNull=false)]
-		public string Producer
-		{
-			get
-			{
-				return this._Producer;
-			}
-			set
-			{
-				if ((this._Producer != value))
-				{
-					this.OnProducerChanging(value);
-					this.SendPropertyChanging();
-					this._Producer = value;
-					this.SendPropertyChanged("Producer");
-					this.OnProducerChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Phone_Model_Phone", Storage="_Phones", ThisKey="Model_ID", OtherKey="Phone_Model_ID")]
-		public EntitySet<Phone> Phones
-		{
-			get
-			{
-				return this._Phones;
-			}
-			set
-			{
-				this._Phones.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Phones(Phone entity)
-		{
-			this.SendPropertyChanging();
-			entity.Phone_Model = this;
-		}
-		
-		private void detach_Phones(Phone entity)
-		{
-			this.SendPropertyChanging();
-			entity.Phone_Model = null;
 		}
 	}
 }

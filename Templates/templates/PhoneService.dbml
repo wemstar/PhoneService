@@ -35,20 +35,11 @@
   <Table Name="dbo.Phone" Member="Phones">
     <Type Name="Phone">
       <Column Name="Phone_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Phone_Model_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Color" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="State" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="State" Type="System.String" DbType="NChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="Model_Name" Type="System.String" DbType="NChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="Serial_Sumber" Type="System.String" DbType="NChar(40) NOT NULL" CanBeNull="false" />
       <Association Name="Phone_Issiue" Member="Issiues" ThisKey="Phone_ID" OtherKey="Issiue_Phone_ID" Type="Issiue" />
-      <Association Name="Phone_Model_Phone" Member="Phone_Model" ThisKey="Phone_Model_ID" OtherKey="Model_ID" Type="Phone_Model" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Phone_Model" Member="Phone_Models">
-    <Type Name="Phone_Model">
-      <Column Name="Model_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Model_Parts" Type="System.Xml.Linq.XElement" DbType="Xml" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="Name" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="Producer" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
-      <Association Name="Phone_Model_Phone" Member="Phones" ThisKey="Model_ID" OtherKey="Phone_Model_ID" Type="Phone" />
     </Type>
   </Table>
 </Database>

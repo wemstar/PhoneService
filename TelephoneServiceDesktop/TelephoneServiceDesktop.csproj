@@ -100,8 +100,17 @@
     <EmbeddedResource Include="controls\IssiueList.resx">
       <DependentUpon>IssiueList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="controls\NewClient.resx">
+      <DependentUpon>NewClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="controls\NewIssiueControl.resx">
       <DependentUpon>NewIssiueControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="controls\NewPhone.resx">
+      <DependentUpon>NewPhone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="controls\PrintBill.resx">
+      <DependentUpon>PrintBill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -137,6 +146,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BillTransform.xslt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

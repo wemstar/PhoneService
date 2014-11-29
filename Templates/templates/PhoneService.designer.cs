@@ -158,7 +158,7 @@ namespace Templates.templates
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Client_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Client_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Client_ID
 		{
 			get
@@ -316,8 +316,6 @@ namespace Templates.templates
 		
 		private int _Issiue_Phone_ID;
 		
-		private string _Status;
-		
 		private int _Priority;
 		
 		private EntitySet<Issiue_History> _Issiue_Histories;
@@ -336,8 +334,6 @@ namespace Templates.templates
     partial void OnIssiue_Client_IDChanged();
     partial void OnIssiue_Phone_IDChanging(int value);
     partial void OnIssiue_Phone_IDChanged();
-    partial void OnStatusChanging(string value);
-    partial void OnStatusChanged();
     partial void OnPriorityChanging(int value);
     partial void OnPriorityChanged();
     #endregion
@@ -350,7 +346,7 @@ namespace Templates.templates
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Issiue_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Issiue_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Issiue_ID
 		{
 			get
@@ -414,26 +410,6 @@ namespace Templates.templates
 					this._Issiue_Phone_ID = value;
 					this.SendPropertyChanged("Issiue_Phone_ID");
 					this.OnIssiue_Phone_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NChar(10) NOT NULL", CanBeNull=false)]
-		public string Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
 				}
 			}
 		}
@@ -616,7 +592,7 @@ namespace Templates.templates
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_History_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_History_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int History_ID
 		{
 			get
@@ -834,7 +810,7 @@ namespace Templates.templates
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Phone_ID
 		{
 			get
@@ -1008,6 +984,10 @@ namespace Templates.templates
 		
 		private System.Xml.Linq.XElement _Model_Parts;
 		
+		private string _Name;
+		
+		private string _Producer;
+		
 		private EntitySet<Phone> _Phones;
 		
     #region Extensibility Method Definitions
@@ -1018,6 +998,10 @@ namespace Templates.templates
     partial void OnModel_IDChanged();
     partial void OnModel_PartsChanging(System.Xml.Linq.XElement value);
     partial void OnModel_PartsChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnProducerChanging(string value);
+    partial void OnProducerChanged();
     #endregion
 		
 		public Phone_Model()
@@ -1026,7 +1010,7 @@ namespace Templates.templates
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Model_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Model_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Model_ID
 		{
 			get
@@ -1046,7 +1030,7 @@ namespace Templates.templates
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Model_Parts", DbType="Xml NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Model_Parts", DbType="Xml", UpdateCheck=UpdateCheck.Never)]
 		public System.Xml.Linq.XElement Model_Parts
 		{
 			get
@@ -1062,6 +1046,46 @@ namespace Templates.templates
 					this._Model_Parts = value;
 					this.SendPropertyChanged("Model_Parts");
 					this.OnModel_PartsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NChar(30) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Producer", DbType="NChar(20) NOT NULL", CanBeNull=false)]
+		public string Producer
+		{
+			get
+			{
+				return this._Producer;
+			}
+			set
+			{
+				if ((this._Producer != value))
+				{
+					this.OnProducerChanging(value);
+					this.SendPropertyChanging();
+					this._Producer = value;
+					this.SendPropertyChanged("Producer");
+					this.OnProducerChanged();
 				}
 			}
 		}

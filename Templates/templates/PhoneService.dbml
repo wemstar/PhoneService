@@ -2,7 +2,7 @@
   <Connection Mode="AppSettings" ConnectionString="Data Source=POTFOREK;Initial Catalog=Telephone_Service;Integrated Security=True" SettingsObjectName="Templates.Properties.Settings" SettingsPropertyName="Telephone_ServiceConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Client" Member="Clients">
     <Type Name="Client">
-      <Column Name="Client_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Client_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Client_Name" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="Client_Surname" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="Client_Telephone" Type="System.String" DbType="NChar(15) NOT NULL" CanBeNull="false" />
@@ -12,10 +12,9 @@
   </Table>
   <Table Name="dbo.Issiue" Member="Issiues">
     <Type Name="Issiue">
-      <Column Name="Issiue_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Issiue_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Issiue_Client_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Issiue_Phone_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Status" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="Priority" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Issiue_Issiue_History" Member="Issiue_Histories" ThisKey="Issiue_ID" OtherKey="History_Issiue_ID" Type="Issiue_History" />
       <Association Name="Client_Issiue" Member="Client" ThisKey="Issiue_Client_ID" OtherKey="Client_ID" Type="Client" IsForeignKey="true" />
@@ -24,7 +23,7 @@
   </Table>
   <Table Name="dbo.Issiue_History" Member="Issiue_Histories">
     <Type Name="Issiue_History">
-      <Column Name="History_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="History_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="History_Issiue_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="History_From_Status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Column Name="History_To_Status" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
@@ -35,7 +34,7 @@
   </Table>
   <Table Name="dbo.Phone" Member="Phones">
     <Type Name="Phone">
-      <Column Name="Phone_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Phone_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Phone_Model_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Color" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="State" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -45,8 +44,10 @@
   </Table>
   <Table Name="dbo.Phone_Model" Member="Phone_Models">
     <Type Name="Phone_Model">
-      <Column Name="Model_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Model_Parts" Type="System.Xml.Linq.XElement" DbType="Xml NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Model_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Model_Parts" Type="System.Xml.Linq.XElement" DbType="Xml" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Name" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Producer" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
       <Association Name="Phone_Model_Phone" Member="Phones" ThisKey="Model_ID" OtherKey="Phone_Model_ID" Type="Phone" />
     </Type>
   </Table>

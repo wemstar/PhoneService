@@ -2,62 +2,62 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="PhoneService">
   <DataContextMoniker Name="/PhoneServiceDataContext" />
   <nestedChildShapes>
-    <classShape Id="8b661434-8c9d-475b-b459-7b2b48404c40" absoluteBounds="1.375, 1.5, 2, 1.7708968098958331">
+    <classShape Id="2a6b8e56-058b-4510-88c6-093b55ac4eab" absoluteBounds="1.375, 1.125, 2, 1.7708968098958331">
       <DataClassMoniker Name="/PhoneServiceDataContext/Client" />
       <nestedChildShapes>
-        <elementListCompartment Id="b03d8dcd-d33c-42d1-b526-6678cbdf2387" absoluteBounds="1.3900000000000001, 1.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="370f2f8c-413d-4270-ad5c-c1fc12c4f838" absoluteBounds="1.3900000000000001, 1.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="c3d21f8b-78ff-4bbb-ad14-8b2777052a02" absoluteBounds="2.125, 4, 2, 1.7708968098958331">
+    <classShape Id="aff8241c-7db6-4649-9639-ec077a0c29bd" absoluteBounds="4.75, 1.375, 2, 1.5785953776041666">
       <DataClassMoniker Name="/PhoneServiceDataContext/Issiue" />
       <nestedChildShapes>
-        <elementListCompartment Id="1e9e8716-0f96-4d48-a66f-800cb4753ddc" absoluteBounds="2.14, 4.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="2dacf1a2-2abe-49a5-b112-ff7ad85d58df" absoluteBounds="4.765, 1.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 3.27089680989583); (2.75 : 4)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.375 : 2.58099609375); (4.51041666666667 : 2.58099609375 : JumpStart); (4.67708333333333 : 2.58099609375 : JumpEnd); (4.75 : 2.58099609375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PhoneServiceDataContext/Client/Client_Issiue" />
       <nodes>
-        <classShapeMoniker Id="8b661434-8c9d-475b-b459-7b2b48404c40" />
-        <classShapeMoniker Id="c3d21f8b-78ff-4bbb-ad14-8b2777052a02" />
+        <classShapeMoniker Id="2a6b8e56-058b-4510-88c6-093b55ac4eab" />
+        <classShapeMoniker Id="aff8241c-7db6-4649-9639-ec077a0c29bd" />
       </nodes>
     </associationConnector>
-    <classShape Id="667ff533-56ee-4933-bb9c-357da3550cab" absoluteBounds="4.625, 2.5, 2, 1.9631982421875">
+    <classShape Id="d9682b66-cdea-4a05-8cf6-e7cce6d89c7e" absoluteBounds="1, 3.625, 2, 1.9631982421875">
       <DataClassMoniker Name="/PhoneServiceDataContext/Issiue_History" />
       <nestedChildShapes>
-        <elementListCompartment Id="99380e2e-e278-4c86-9c24-4b0ebaafc5fd" absoluteBounds="4.64, 2.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="23178da1-ca2e-405b-a8e8-eb93f40b688b" absoluteBounds="1.0150000000000001, 4.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.125 : 4.23159912109375); (4.625 : 4.23159912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(6.65625 : 2.95359537760417); (6.65625 : 3.71875); (5.70833333333333 : 3.71875 : JumpStart); (5.54166666666667 : 3.71875 : JumpEnd); (4.67708333333333 : 3.71875 : JumpStart); (4.51041666666667 : 3.71875 : JumpEnd); (3 : 3.71875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PhoneServiceDataContext/Issiue/Issiue_Issiue_History" />
       <nodes>
-        <classShapeMoniker Id="c3d21f8b-78ff-4bbb-ad14-8b2777052a02" />
-        <classShapeMoniker Id="667ff533-56ee-4933-bb9c-357da3550cab" />
+        <classShapeMoniker Id="aff8241c-7db6-4649-9639-ec077a0c29bd" />
+        <classShapeMoniker Id="d9682b66-cdea-4a05-8cf6-e7cce6d89c7e" />
       </nodes>
     </associationConnector>
-    <classShape Id="7557f706-9069-4832-8e7e-5733988b41a0" absoluteBounds="5.25, 1.625, 2, 1.5785953776041666">
+    <classShape Id="3edfd384-fbb8-469f-b48b-f480abb925fb" absoluteBounds="4.5, 3.875, 2, 1.5785953776041666">
       <DataClassMoniker Name="/PhoneServiceDataContext/Phone" />
       <nestedChildShapes>
-        <elementListCompartment Id="7a843c13-4b68-483d-b243-b6a3adc1463c" absoluteBounds="5.265, 2.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b0816def-d4c2-4cf1-8d74-fb2662867e1f" absoluteBounds="4.515, 4.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.96875 : 3.20359537760417); (6.96875 : 5.14829752604167); (4.125 : 5.14829752604167)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.625 : 3.875); (5.625 : 2.95359537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PhoneServiceDataContext/Phone/Phone_Issiue" />
       <nodes>
-        <classShapeMoniker Id="7557f706-9069-4832-8e7e-5733988b41a0" />
-        <classShapeMoniker Id="c3d21f8b-78ff-4bbb-ad14-8b2777052a02" />
+        <classShapeMoniker Id="3edfd384-fbb8-469f-b48b-f480abb925fb" />
+        <classShapeMoniker Id="aff8241c-7db6-4649-9639-ec077a0c29bd" />
       </nodes>
     </associationConnector>
-    <classShape Id="1b7e2040-bf8f-473e-8b29-87a54fa9d1de" absoluteBounds="4.5, 1.125, 2, 1.1939925130208333">
+    <classShape Id="b4d24953-4250-45e7-91b1-f78b546ad5bb" absoluteBounds="4.25, 0.625, 2, 1.5785953776041666">
       <DataClassMoniker Name="/PhoneServiceDataContext/Phone_Model" />
       <nestedChildShapes>
-        <elementListCompartment Id="e42bdffa-feeb-4d81-99b8-e3a953075223" absoluteBounds="4.515, 1.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="bde0dd1d-6b2f-40d2-8f67-1ac5ea7ebc9c" absoluteBounds="4.265, 1.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.5 : 1.125); (5.5 : 0.875); (6.25 : 0.875); (6.25 : 1.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(4.59375 : 2.20359537760417); (4.59375 : 3.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PhoneServiceDataContext/Phone_Model/Phone_Model_Phone" />
       <nodes>
-        <classShapeMoniker Id="1b7e2040-bf8f-473e-8b29-87a54fa9d1de" />
-        <classShapeMoniker Id="7557f706-9069-4832-8e7e-5733988b41a0" />
+        <classShapeMoniker Id="b4d24953-4250-45e7-91b1-f78b546ad5bb" />
+        <classShapeMoniker Id="3edfd384-fbb8-469f-b48b-f480abb925fb" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

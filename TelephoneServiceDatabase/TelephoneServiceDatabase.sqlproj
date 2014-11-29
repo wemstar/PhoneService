@@ -67,6 +67,8 @@
     <Build Include="tables\Phone.sql" />
     <Build Include="tables\Phone_Model.sql" />
     <Build Include="tables\Issiue_History.sql" />
+    <Build Include="views\GetCurrentStatus.sql" />
+    <Build Include="views\GetActiveIssiues.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TelephoneServiceDatabase.refactorlog" />
@@ -81,5 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="procedures\NewIssiue.cs" />
+    <Compile Include="procedures\UpdateIssiue.cs" />
   </ItemGroup>
 </Project>

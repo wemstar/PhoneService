@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Telephone_Service" Class="ViewsTemplateDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=POTFOREK;Initial Catalog=Telephone_Service;Integrated Security=True" SettingsObjectName="Templates.Properties.Settings" SettingsPropertyName="Telephone_ServiceConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.GetCurrentStatus" Member="GetCurrentStatus">
+    <Type Name="GetCurrentStatus">
+      <Column Name="History_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="History_Issiue_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="History_From_Status" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="History_To_Status" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="History_Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="History_Comment" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Issiue_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Issiue_Client_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Issiue_Phone_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Priority" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GetActiveIssiues" Member="GetActiveIssiues">
+    <Type Name="GetActiveIssiue">
+      <Column Name="Issiue_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Issiue_Client_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Issiue_Phone_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Priority" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
